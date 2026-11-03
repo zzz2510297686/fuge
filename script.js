@@ -526,21 +526,34 @@ function setupContactForm() {
         return;
       }
 
+      // 404 / 405 说明这个域名下压根没有接口（纯静态托管），不是网络问题
+      if (response.status === 404 || response.status === 405) throw new Error("NO_ENDPOINT");
       throw new Error(`HTTP ${response.status}`);
-    } catch {
+    } catch (error) {
       // 提交失败：本机留一份，避免客户白写
       const saved = safeReadJson("fuge-inquiries", []);
       saved.push({ ...payload, submittedAt: new Date().toISOString(), delivered: false });
       safeSet("fuge-inquiries", JSON.stringify(saved));
 
       const href = mailtoHref(payload);
+      const link = href
+        ? `<a class="inline-link" href="${href}"><span class="lang-zh">改用邮件发送</span><span class="lang-en">send it by email</span></a>`
+        : "";
+      const noEndpoint = error instanceof Error && error.message === "NO_ENDPOINT";
+
       showStatus(
         "is-error",
-        "提交没能送达。请检查网络后重试" + (href ? "，或" : "。"),
-        "The submission didn't go through. Please retry" + (href ? ", or " : "."),
-        href
-          ? `<a class="inline-link" href="${href}"><span class="lang-zh">改用邮件发送</span><span class="lang-en">send it by email</span></a>`
-          : ""
+        noEndpoint
+          ? link
+            ? "在线表单暂未开通，请"
+            : `在线表单暂未开通，请直接写信到 ${fallbackMail || "我们的邮箱"}。`
+          : "提交没能送达。请检查网络后重试" + (href ? "，或" : "。"),
+        noEndpoint
+          ? link
+            ? "The online form isn't connected yet — please "
+            : `The online form isn't connected yet — please write to ${fallbackMail || "us"} directly.`
+          : "The submission didn't go through. Please retry" + (href ? ", or " : "."),
+        link
       );
     } finally {
       setBusy(false);
