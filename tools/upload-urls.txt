@@ -1,7 +1,0 @@
-petal-bowl {"url": "https://assets-persist.lovart.ai/img/5f17dfd380e349128bc4a3f1f93c5057/35141ac0-a921-4d50-b212-1f1a37cf5b38.png"}
-oval-plate {"url": "https://assets-persist.lovart.ai/img/5f17dfd380e349128bc4a3f1f93c5057/093bafe2-acda-4f83-9903-20f886715853.png"}
-square-plate {"url": "https://assets-persist.lovart.ai/img/5f17dfd380e349128bc4a3f1f93c5057/8401ac74-714b-4344-9114-65e72f5979e2.png"}
-hex-bowl {"url": "https://assets-persist.lovart.ai/img/5f17dfd380e349128bc4a3f1f93c5057/96b243d5-b28b-45cf-84c5-aee2daecca79.png"}
-deep-bowl {"url": "https://assets-persist.lovart.ai/img/5f17dfd380e349128bc4a3f1f93c5057/4cd3a8ae-73fb-4ab1-8eb7-1513eba2243d.jpg"}
-shallow-bowl {"url": "https://assets-persist.lovart.ai/img/5f17dfd380e349128bc4a3f1f93c5057/c226ab2d-2678-41d6-8abd-544d58cae7d1.jpeg"}
-organic-plate {"url": "https://assets-persist.lovart.ai/img/5f17dfd380e349128bc4a3f1f93c5057/bbdfc2a7-3894-4b1f-afcc-ca3fc02de59e.png"}

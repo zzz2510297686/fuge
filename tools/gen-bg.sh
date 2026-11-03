@@ -16,8 +16,12 @@ PROMPT='Replace the background with a perfectly flat uniform #F4F4F4. Absolutely
 
 JSON_FILE="/tmp/gen-$ID.json"
 
-export LOVART_ACCESS_KEY="ak_338f68ae249026bc4e17cc52ef01af01"
-export LOVART_SECRET_KEY="sk_6a1a9c7821690dc433d99484afe7ffdfd37558e1cd17772df2f0355f2efb898a"
+# 凭据从环境变量读取，不写进文件（仓库可能被公开）
+if [ -z "${LOVART_ACCESS_KEY:-}" ] || [ -z "${LOVART_SECRET_KEY:-}" ]; then
+  echo "缺少 LOVART_ACCESS_KEY / LOVART_SECRET_KEY，请先 export 再运行" >&2
+  exit 1
+fi
+export LOVART_ACCESS_KEY LOVART_SECRET_KEY
 unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
 export NO_PROXY="*" no_proxy="*"
 

@@ -27,10 +27,18 @@ assets/*.jpeg
 # 与 assets/catalog.pdf 完全重复的副本
 FUGE 产品手册.pdf
 
+# 过程文档（内部资料，不对外公开）
+evidence/
+website_requirements.md
+tools/upload-urls.txt
+
+# GitHub Actions 工作流需要 workflow 权限才能推送，改用 gh-pages 分支发布
+.github/
+
 # 旧版页面备份与工作区元数据
-evidence/_backup-v1/
 .workbuddy/
 
 # 系统
 .DS_Store
 Thumbs.db
+tools/_archived/
