@@ -1,0 +1,36 @@
+# 依赖与构建产物
+node_modules/
+
+# 询盘数据与邮箱凭据 —— 绝不入库
+data/
+config/email.json
+
+# 图片工程中间产物
+tools/ai-raw/
+tools/ai-raw2/
+tools/backup-img/
+tools/img-ai-bg/
+
+# 原始素材（体积大，本地归档，不入库）
+产品图片/
+产品场景图/
+assets/*.png
+assets/*.jpg
+assets/*.jpeg
+
+# 上面这批里真正被页面引用的，单独放行
+!assets/logo-128.png
+!assets/favicon-64.png
+!assets/apple-touch-icon.png
+!assets/og-cover.jpg
+
+# 与 assets/catalog.pdf 完全重复的副本
+FUGE 产品手册.pdf
+
+# 旧版页面备份与工作区元数据
+evidence/_backup-v1/
+.workbuddy/
+
+# 系统
+.DS_Store
+Thumbs.db

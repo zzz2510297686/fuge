@@ -1,0 +1,15 @@
+{
+  "smtp": {
+    "host": "smtp.exmail.qq.com",
+    "port": 465,
+    "secure": true,
+    "user": "noreply@yourdomain.com",
+    "pass": "这里是邮箱授权码，不是登录密码"
+  },
+  "mail": {
+    "from": "noreply@yourdomain.com",
+    "fromName": "浮格 FUGE 官网",
+    "to": ["sales@yourdomain.com"],
+    "subjectPrefix": ""
+  }
+}
