@@ -7,7 +7,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 REMOTE="${1:-https://github.com/zzz2510297686/fuge.git}"
 
 # 只发布这些，新增页面记得加进来
-SITE_FILES=(index.html products.html news.html contact.html 404.html styles.css script.js assets)
+SITE_FILES=(index.html products.html news.html contact.html 404.html styles.css script.js robots.txt sitemap.xml assets)
 
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
