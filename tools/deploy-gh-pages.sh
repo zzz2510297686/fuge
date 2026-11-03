@@ -21,6 +21,20 @@ cd "$TMP"
 git init -q -b gh-pages
 git add -A
 git -c user.name="FUGE" -c user.email="noreply@fuge.local" commit -q -m "Deploy site $(date +%Y-%m-%d\ %H:%M)"
-git push -f "$REMOTE" gh-pages:gh-pages
+
+# 推送偶尔会因网络瞬断失败，重试三次
+for attempt in 1 2 3; do
+  if git push -f "$REMOTE" gh-pages:gh-pages; then
+    ok=1
+    break
+  fi
+  echo "推送失败（第 $attempt 次），稍后重试…" >&2
+  sleep 5
+done
+
+if [ "${ok:-0}" != "1" ]; then
+  echo "推送三次均失败，请检查网络或令牌后重试" >&2
+  exit 1
+fi
 
 echo "已发布 $(find . -path ./.git -prune -o -type f -print | wc -l) 个文件到 gh-pages"
