@@ -443,6 +443,9 @@ function setupContactForm() {
   // 网络彻底不通时，至少让客户的文字能一键带进邮件客户端
   function mailtoHref(payload) {
     if (!fallbackMail) return "";
+    // 下拉框取可见文字，避免邮件里出现 plates 这种内部值
+    const typeSelect = form.querySelector('[name="productType"]');
+    const typeLabel = typeSelect?.selectedOptions?.[0]?.textContent?.trim() || payload.productType || "";
     const subject = encodeURIComponent(`官网询盘 · ${payload.name || ""}`);
     const body = encodeURIComponent(
       [
@@ -450,7 +453,7 @@ function setupContactForm() {
         `公司：${payload.company || ""}`,
         `邮箱：${payload.email || ""}`,
         `微信 / 电话：${payload.contact || ""}`,
-        `产品类型：${payload.productType || ""}`,
+        `产品类型：${typeLabel}`,
         `预计数量：${payload.quantity || ""}`,
         `项目时间：${payload.timeline || ""}`,
         `使用场景：${payload.useCase || ""}`,
